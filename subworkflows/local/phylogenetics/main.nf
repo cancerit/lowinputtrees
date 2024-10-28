@@ -1,7 +1,7 @@
-include { getPhylogeny } from "$projectDir/modules/getPhylogeny.nf"
-include { matrixGeneratorOnBranches } from "$projectDir/modules/matrixGeneratorOnBranches.nf"
-include { concatMatrices } from "$projectDir/modules/concatMatrices.nf"
-include { sigprofilerPlotSnpByBranches } from "$projectDir/modules/sigprofilerPlotSnpByBranches.nf"
+include { getPhylogeny } from "../../../modules/local/getPhylogeny"
+include { matrixGeneratorOnBranches } from "../../../modules/local/matrixGeneratorOnBranches"
+include { concatMatrices } from "../../../modules/local/concatMatrices"
+include { sigprofilerPlotSnpByBranches } from "../../../modules/local/sigprofilerPlotSnpByBranches"
 
 
 workflow PHYLOGENETICS { // phylogenetics workflow for SNVs

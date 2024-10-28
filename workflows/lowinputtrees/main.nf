@@ -5,19 +5,19 @@ nextflow.enable.dsl=2
 
 // include different workflow options
 include { validateParameters; paramsHelp; paramsSummaryLog; samplesheetToList } from 'plugin/nf-schema'
-include { CONPAIR_FILTER_WITH_MATCH_NORMAL } from "$projectDir/workflows/conpair_filter_with_match_normal.nf"
-include { FILTER_WITH_MATCH_NORMAL_SNP } from "$projectDir/workflows/filter_with_match_normal_snps.nf"
-include { FILTER_WITH_MATCH_NORMAL_INDEL } from "$projectDir/workflows/filter_with_match_normal_indels.nf"
-include { PHYLOGENETICS } from "$projectDir/workflows/phylogenetics.nf"
-include { PHYLOGENETICS_PROVIDED_TREE_TOPOLOGY } from "$projectDir/workflows/phylogenetics_provided_topology.nf"
+include { CONPAIR_FILTER_WITH_MATCH_NORMAL } from "../../subworkflows/local/conpair_filter_with_match_normal"
+include { FILTER_WITH_MATCH_NORMAL_SNP } from "../../subworkflows/local/filter_with_match_normal_snps"
+include { FILTER_WITH_MATCH_NORMAL_INDEL } from "../../subworkflows/local/filter_with_match_normal_indels"
+include { PHYLOGENETICS } from "../../subworkflows/local/phylogenetics"
+include { PHYLOGENETICS_PROVIDED_TREE_TOPOLOGY } from "../../subworkflows/local/phylogenetics_provided_topology"
 
 // download container images
-include { singularityPreflight } from "$projectDir/modules/singularity"
-// If Singularity is used as the container engine and not showing help message, do preflight check to prevent parallel pull issues
-// Related issue: https://github.com/nextflow-io/nextflow/issues/1210
-if (workflow.containerEngine == 'singularity') {
-    singularityPreflight(workflow.container, params.singularity_cachedir)
-}
+// include { singularityPreflight } from "../../../modules/local/singularity"
+// // If Singularity is used as the container engine and not showing help message, do preflight check to prevent parallel pull issues
+// // Related issue: https://github.com/nextflow-io/nextflow/issues/1210
+// if (workflow.containerEngine == 'singularity') {
+//     singularityPreflight(workflow.container, params.singularity_cachedir)
+// }
 
 // validate parameters
 validateParameters()

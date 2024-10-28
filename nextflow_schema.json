@@ -22,26 +22,6 @@
                     "description": "Path to comma-separated file containing information about the samples in the experiment.",
                     "help_text": "You will need to create a design file with information about the samples in your experiment before running the pipeline. Use this parameter to specify its location. It has to be a comma-separated file with 3 columns, and a header row. See [usage docs](https://nf-co.re/lowinputtrees/usage#samplesheet-input).",
                     "fa_icon": "fas fa-file-csv"
-                },  // MUST BE MADE COMPATIBLE
-                "sample_paths": {
-                  "type": "string",
-                  "description": "A file that contains paths to relevant files for the processes in the pipeline, with headers similar to demo_files/lcm_processing_input_indel.tsv for indels or demo_files/lcm_processing_input_snv.tsv for SNVs.",
-                  "format": "file-path"
-                },
-                "reference_genome": {
-                  "type": "string",
-                  "description": "Path to the reference genome fasta file.",
-                  "format": "file-path"
-                },
-                "reference_genome_dict": {
-                  "type": "string",
-                  "format": "file-path",
-                  "description": "Path to the *.dict file associated with the reference genome fasta file."
-                },
-                "reference_genome_idx": {
-                  "type": "string",
-                  "format": "file-path",
-                  "description": "Path to the *.idx file associated with the reference genome fasta file."
                 },
                 "with_match_normal": {
                   "type": "boolean",

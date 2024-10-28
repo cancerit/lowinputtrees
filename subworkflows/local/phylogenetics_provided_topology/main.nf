@@ -1,7 +1,7 @@
-include { mutToTree } from "$projectDir/modules/mutToTree.nf"
-include { matrixGeneratorOnBranches } from "$projectDir/modules/matrixGeneratorOnBranches.nf"
-include { concatMatrices } from "$projectDir/modules/concatMatrices.nf"
-include { sigprofilerPlotSnpByBranches } from "$projectDir/modules/sigprofilerPlotSnpByBranches.nf"
+include { mutToTree } from "../../../modules/local/mutToTree"
+include { matrixGeneratorOnBranches } from "../../../modules/local/matrixGeneratorOnBranches"
+include { concatMatrices } from "../../../modules/local/concatMatrices"
+include { sigprofilerPlotSnpByBranches } from "../../../modules/local/sigprofilerPlotSnpByBranches"
 
 workflow PHYLOGENETICS_PROVIDED_TREE_TOPOLOGY { // phylogenetics workflow for INDELs
     take:
