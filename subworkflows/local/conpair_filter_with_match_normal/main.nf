@@ -1,8 +1,8 @@
-include { conpairPileup as conpairPileupSample } from "$projectDir/modules/conpairPileup.nf"
-include { conpairPileup as conpairPileupMatch } from "$projectDir/modules/conpairPileup.nf"
-include { conpairFilter } from "$projectDir/modules/conpairFilter.nf"
-include { verifyConcordance } from "$projectDir/modules/verifyConcordance.nf"
-include { conpairContamination } from "$projectDir/modules/conpairContamination.nf"
+include { conpairPileup as conpairPileupSample } from "../../../modules/local/conpairPileup/main.nf"
+include { conpairPileup as conpairPileupMatch } from "../../../modules/local/conpairPileup/main.nf"
+include { conpairFilter } from "../../../modules/local/conpairFilter/main.nf"
+include { verifyConcordance } from "../../../modules/local/verifyConcordance/main.nf"
+include { conpairContamination } from "../../../modules/local/conpairContamination/main.nf"
 
 workflow CONPAIR_FILTER_WITH_MATCH_NORMAL {
     take:

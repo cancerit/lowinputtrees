@@ -1,9 +1,9 @@
-include { pindelFilter } from "$projectDir/modules/pindelFilter.nf"
-include { cgpVaf } from "$projectDir/modules/cgpVaf.nf"
-include { betaBinomFilterIndexIndel } from "$projectDir/modules/betaBinomFilterIndexIndel.nf"
-include { betaBinomFilter } from "$projectDir/modules/betaBinomFilter.nf"
-include { matrixGeneratorOnSamples } from "$projectDir/modules/matrixGeneratorOnSamples.nf"
-include { sigprofilerPlotSnpBySamples } from "$projectDir/modules/sigprofilerPlotSnpBySamples.nf"
+include { pindelFilter } from "../../../modules/local/pindelFilter/main.nf"
+include { cgpVaf } from "../../../modules/local/cgpVaf/main.nf"
+include { betaBinomFilterIndexIndel } from "../../../modules/local/betaBinomFilterIndexIndel/main.nf"
+include { betaBinomFilter } from "../../../modules/local/betaBinomFilter/main.nf"
+include { matrixGeneratorOnSamples } from "../../../modules/local/matrixGeneratorOnSamples/main.nf"
+include { sigprofilerPlotSnpBySamples } from "../../../modules/local/sigprofilerPlotSnpBySamples/main.nf"
 
 
 
