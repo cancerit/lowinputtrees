@@ -83,8 +83,8 @@ workflow PIPELINE_INITIALISATION {
                 }
         }
         .groupTuple()
-        .map { samplesheet ->
-            validateInputSamplesheet(samplesheet)
+        .map { input ->
+            validateInputSamplesheet(input)
         }
         .map {
             meta, fastqs ->

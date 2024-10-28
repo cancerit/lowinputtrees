@@ -19,7 +19,7 @@ include { methodsDescriptionText } from '../utils_nfcore_lowinputtrees_pipeline/
 workflow LOWINPUTTREES {
 
     take:
-    ch_samplesheet // channel: samplesheet read in from --input
+    ch_input // channel: input read in from --input
     main:
 
     ch_versions = Channel.empty()
