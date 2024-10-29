@@ -27,9 +27,9 @@ log.info paramsSummaryLog(workflow)
 
 workflow LOWINPUTTREES {
 
-    // create a channel from the sample paths
-    ch_input = Channel.fromList(samplesheetToList(params.input, "$projectDir/assets/schema_input.json"))
-    ch_input.view()
+    // // create a channel from the sample paths
+    // ch_input = Channel.fromList(samplesheetToList(params.input, "$projectDir/assets/schema_input.json"))
+    // ch_input.view()
     
     if (params.with_match_normal == true) {
 
