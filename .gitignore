@@ -4,3 +4,5 @@ singularity.nextflow/
 .nextflow*
 null/
 singularity/
+*.log
+out/
