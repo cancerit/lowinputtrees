@@ -95,7 +95,8 @@
                     "hidden": true,
                     "default": "s3://ngi-igenomes/igenomes/"
                 }
-            }
+            },
+            "required": ["genome"]
         },
         "institutional_config_options": {
             "title": "Institutional config options",

@@ -11,6 +11,6 @@ process matrixGeneratorOnSamples {
     script:
     mutmat_dir = "sample_mutmat/output"
     """
-    SigProfilerMatrixGenerator matrix_generator sample_mutmat GRCh38 sample_mutmat
+    SigProfilerMatrixGenerator matrix_generator sample_mutmat ${params.genome} sample_mutmat
     """
 }
