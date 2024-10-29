@@ -81,7 +81,7 @@
         "exists": true
       }
     },
-    "required": ["sample_id", "match_normal_id", "pdid", "bam_match", "bai_match", "bam", "bai", "bas", "met"]
+    "required": ["sample_id", "match_normal_id", "pdid", "bam_match", "bai_match", "bam", "bai", "bas"]
   }
 }
 
