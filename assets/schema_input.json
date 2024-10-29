@@ -28,12 +28,17 @@
         "errorMessage": "Donor ID must be provided and cannot contain spaces",
         "meta": ["pdid"]
       },
-      "bam_match": {
+      "bam": {
         "type": "string",
         "format": "file-path",
         "exists": true
       },
-      "bai_match": {
+      "bai": {
+        "type": "string",
+        "format": "file-path",
+        "exists": true
+      },
+      "bas": {
         "type": "string",
         "format": "file-path",
         "exists": true
@@ -60,22 +65,12 @@
         "format": "file-path",
         "exists": true
       },
-      "bam": {
+      "bam_match": {
         "type": "string",
         "format": "file-path",
         "exists": true
       },
-      "bai": {
-        "type": "string",
-        "format": "file-path",
-        "exists": true
-      },
-      "bas": {
-        "type": "string",
-        "format": "file-path",
-        "exists": true
-      },
-      "met": {
+      "bai_match": {
         "type": "string",
         "format": "file-path",
         "exists": true
