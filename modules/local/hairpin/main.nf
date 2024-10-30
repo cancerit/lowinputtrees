@@ -3,7 +3,7 @@ process hairpinFilter {
 
     // hairpin filter the mutation file 
     input:
-    tuple val(sample_id), val(match_normal_id), val(pdid), path(vcf), path(vcf_tbi), path(bam), path(bai), path(bas), path(met), path(bam_match), path(bai_match)
+    tuple val(sample_id), val(match_normal_id), val(pdid), path(vcf), path(vcf_tbi), path(bam), path(bai), path(bas), path(bam_match), path(bai_match)
     path vcfilter_config
 
     output: 

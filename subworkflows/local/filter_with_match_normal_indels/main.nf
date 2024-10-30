@@ -35,6 +35,8 @@ workflow FILTER_WITH_MATCH_NORMAL_INDEL {
         .map( sample -> tuple(sample[0][0], sample[1][1], sample[1][2], sample[1][3], sample[1][4], sample[0][1]) )
     betaBinomFilter(beta_binom_filter_input_ch, mut_type)
 
+    betaBinomFilter.out.view()
+
     // generate mutation matrix for the samples by SigProfilerMatrixGenerator
     matrixGeneratorOnSamples(betaBinomFilter.out.toList(), mut_type)
 

@@ -51,15 +51,16 @@ workflow LOWINPUTTREES {
         if (params.filter_snp == true) {
             if (params.conpair == true) {
                 sample_paths_content_ch = CONPAIR_FILTER_WITH_MATCH_NORMAL.out
-                    .splitCsv( header: true, sep : '\t' )
-                    .map { row -> tuple( row.sample_id, row.match_normal_id, row.pdid, row.vcf_snp, row.vcf_tbi_snp, row.bam, row.bai, row.bas, row.met, row.bam_match, row.bai_match ) }
+                    .splitCsv( header: true )
+                    .map { row -> tuple( row.sample_id, row.match_normal_id, row.pdid, row.vcf_snp, row.vcf_tbi_snp, row.bam, row.bai, row.bas, row.bam_match, row.bai_match ) }
                 FILTER_WITH_MATCH_NORMAL_SNP(sample_paths_content_ch, params.vcfilter_snv, params.bbinom_rho_snv)
             }
             else {
                 sample_paths = new File(params.input).getText('UTF-8')
                 sample_paths_content_ch = Channel.of(sample_paths)
-                    .splitCsv( header: true, sep : '\t' )
-                    .map { row -> tuple( row.sample_id, row.match_normal_id, row.pdid, row.vcf_snp, row.vcf_tbi_snp, row.bam, row.bai, row.bas, row.met, row.bam_match, row.bai_match ) }
+                    .splitCsv( header: true )
+                    .map { row -> tuple( row.sample_id, row.match_normal_id, row.pdid, row.vcf_snp, row.vcf_tbi_snp, row.bam, row.bai, row.bas, row.bam_match, row.bai_match ) }
+                println(params.vcfilter_snv)
                 FILTER_WITH_MATCH_NORMAL_SNP(sample_paths_content_ch, params.vcfilter_snv, params.bbinom_rho_snv)
             }
         }
@@ -68,14 +69,14 @@ workflow LOWINPUTTREES {
         if (params.filter_indel == true) {
             if (params.conpair == true) {
                 sample_paths_content_ch = CONPAIR_FILTER_WITH_MATCH_NORMAL.out
-                    .splitCsv( header: true, sep : '\t' )
+                    .splitCsv( header: true )
                     .map { row -> tuple( row.sample_id, row.match_normal_id, row.pdid, row.vcf_indel, row.bam, row.bai, row.bam_match, row.bai_match ) }
                 FILTER_WITH_MATCH_NORMAL_INDEL(sample_paths_content_ch, params.vcfilter_indel, params.bbinom_rho_indel)
             }
             else {
                 sample_paths = new File(params.input).getText('UTF-8')
                 sample_paths_content_ch = Channel.of(sample_paths)
-                    .splitCsv( header: true, sep : '\t' )
+                    .splitCsv( header: true )
                     .map { row -> tuple( row.sample_id, row.match_normal_id, row.pdid, row.vcf_indel, row.bam, row.bai, row.bam_match, row.bai_match ) }
                 FILTER_WITH_MATCH_NORMAL_INDEL(sample_paths_content_ch, params.vcfilter_indel, params.bbinom_rho_indel)
             }
@@ -102,7 +103,7 @@ workflow LOWINPUTTREES {
                 // get topology
                 sample_paths = new File(params.input).getText('UTF-8')
                 topology = Channel.of(sample_paths)
-                    .splitCsv( header: true, sep : '\t' )
+                    .splitCsv( header: true )
                     .map { row -> tuple( row.pdid, row.topology ) }
                     .unique()
             
@@ -120,11 +121,11 @@ workflow LOWINPUTTREES {
                 if (params.snv_then_indel == true) {
                     sample_paths = new File(params.input).getText('UTF-8')
                     phylogenetics_snv_input_ch = Channel.of(sample_paths)
-                        .splitCsv( header: true, sep : '\t' )
+                        .splitCsv( header: true )
                         .map { row -> tuple( row.pdid, row.nr_path_snv, row.nv_path_snv, row.genotype_bin_path_snv ) }
                     PHYLOGENETICS(phylogenetics_snv_input_ch, 'phylogenetics_snp_out') // phylogenetics for SNV
                     phylogenetics_indel_input_ch = Channel.of(sample_paths)
-                        .splitCsv( header: true, sep : '\t' )
+                        .splitCsv( header: true )
                         .map { row -> tuple( row.pdid, row.nr_path_indel, row.nv_path_indel, row.genotype_bin_path_indel ) }
                     mutToTree_input_ch = PHYLOGENETICS.out.cross(phylogenetics_indel_input_ch)
                         .map( pdid -> tuple(pdid[0][0], pdid[0][1], pdid[1][1], pdid[1][2], pdid[1][3]) ) // added topology
@@ -137,7 +138,7 @@ workflow LOWINPUTTREES {
                     outdir_basename = (params.phylogenetics_outdir_basename == "") ? 'phylogenetics_indel_out' : params.phylogenetics_outdir_basename
                     sample_paths = new File(params.input).getText('UTF-8')
                     sample_path_content = Channel.of(sample_paths)
-                        .splitCsv( header: true, sep : '\t' )
+                        .splitCsv( header: true )
                         .map{ row -> tuple( row.pdid, row.topology, row.nr_path, row.nv_path, row.genotype_bin_path ) }
                     PHYLOGENETICS_PROVIDED_TREE_TOPOLOGY(sample_path_content, outdir_basename)
                     }
@@ -146,7 +147,7 @@ workflow LOWINPUTTREES {
                         outdir_basename = (params.phylogenetics_outdir_basename == "") ? 'phylogenetics_snp_out' : params.phylogenetics_outdir_basename
                         sample_paths = new File(params.input).getText('UTF-8')
                         sample_path_content = Channel.of(sample_paths)
-                            .splitCsv( header: true, sep : '\t' )
+                            .splitCsv( header: true )
                             .map { row -> tuple( row.pdid, row.nr_path, row.nv_path, row.genotype_bin_path ) }
                         PHYLOGENETICS(sample_path_content, outdir_basename)
                     }

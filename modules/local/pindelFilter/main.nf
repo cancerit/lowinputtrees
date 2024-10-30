@@ -1,5 +1,7 @@
 process pindelFilter {
-    publishDir "${params.outdir}/filter_${mut_type}_out/${pdid}", overwrite: false, pattern: "*.filter.vcf.gz"
+    publishDir "${params.outdir}/filter_${mut_type}_out/${pdid}",
+        overwrite: false,
+        pattern: "*.filter.vcf.gz"
     
     // hairpin filter the mutation file 
     input:
